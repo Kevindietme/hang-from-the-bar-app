@@ -1,9 +1,14 @@
 import './styles/App.css';
+import Header from './components/Header';
+import Exercises from './components/Exercises';
+import Footer from './components/Footer';
 
 function App() {
   return (
   <>
-  <h1 className='border'>This is an H1 test in app.js</h1>
+  <Header />
+  <Exercises />
+  <Footer />
   </>
   );
 }
