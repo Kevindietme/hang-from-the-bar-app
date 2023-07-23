@@ -1,10 +1,14 @@
-export default function Footer() {
-  return(
-    <header>
-        <h1>This is a test from footer</h1>
-        <p>testing footer here</p>
+const gitHubUrl = "https://github.com/Kevindietme/coffee-list--menu";
+const getFullYear = new Date().getFullYear();
 
+export default function Footer () {
 
-    </header>
+  return (
+    <footer>
+      <p>&copy; {getFullYear}
+        <br />
+        <a href={gitHubUrl} target="_blank" rel="noreferrer">See Code in Github</a>
+      </p>
+    </footer>
   )
-}
+};
