@@ -9,7 +9,7 @@ export default function Exercises() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`https://hang-bar-db.web.app/api/exercises`);
+      const response = await fetch(`https://127.0.0.1:5002/exercise`);
       if (!response.ok) {
         throw new Error("Didn't fetch.");
       }
@@ -28,7 +28,7 @@ export default function Exercises() {
         <div className="container px-5 py-24 mx-auto">
           <div className="text-center mb-20">
             <h1 className="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">Hang From the Bar</h1>
-            <button className="flex mx-auto mt-16 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Generate Workout</button>
+            <button onClick={getExercises} className="flex mx-auto mt-16 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Generate Workout</button>
           </div>
           <div className="container flex flex-col items-center justify-center w-full mx-auto">
 
@@ -78,6 +78,9 @@ export default function Exercises() {
               </div>
             </div>
           </div>
+
+
+
           <button className="flex mx-auto mt-16 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Submit</button>
         </div>
       </section>
