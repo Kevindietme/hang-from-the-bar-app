@@ -4,13 +4,32 @@ export default function Exercises() {
   const [exerciseList, setExerciseList] = useState()
   const [message, setMessage] = useState()
 
+  function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+  }
 
   const getExercises = async (type) => {
     setMessage('Loading...')
     setExerciseList()
     const response = await fetch(`https://hang-bar-db.web.app/exercise`)
     // const response = await fetch(`https://hang-bar-db.web.app/exercise${type}`)
-    const data = await response.json()
+    let data = await response.json()
+    data = shuffle(data)
+    console.log(data)
     // TODO: get rid of all but one of each type
     const newData = [
       data.find(e => e.exerciseType === "Pull"),
@@ -22,7 +41,7 @@ export default function Exercises() {
     setExerciseList(newData)
   }
 
-  return (
+return(
     <main>
 
       <section className="text-gray-600 body-font">

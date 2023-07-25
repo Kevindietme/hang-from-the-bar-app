@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Stopwatch = () => {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [tens, setTens] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-  let interval;
+  const intervalRef = useRef(null);
 
   useEffect(() => {
-    return () => clearInterval(interval);
+    return () => clearInterval(intervalRef.current);
   }, []);
 
-  const startTimer = () => {
-    setIsRunning(true);
-    interval = setInterval(() => {
-      setTens((prevTens) => (prevTens + 1) % 100);
-    }, 10);
-  };
+  useEffect(() => {
+    if (isRunning) {
+      intervalRef.current = setInterval(() => {
+        setTens((prevTens) => (prevTens + 1) % 100);
+      }, 10);
+    } else {
+      clearInterval(intervalRef.current);
+    }
+  }, [isRunning]);
 
   useEffect(() => {
     if (tens >= 99) {
@@ -32,14 +35,16 @@ const Stopwatch = () => {
     }
   }, [seconds]);
 
+  const startTimer = () => {
+    setIsRunning(true);
+  };
+
   const stopTimer = () => {
     setIsRunning(false);
-    clearInterval(interval);
   };
 
   const resetTimer = () => {
     setIsRunning(false);
-    clearInterval(interval);
     setMinutes(0);
     setSeconds(0);
     setTens(0);
@@ -54,8 +59,11 @@ const Stopwatch = () => {
         <span id="tens">{tens.toString().padStart(2, '0')}</span>
       </p>
       <div className="buttons-container">
-        <button onClick={isRunning ? stopTimer : startTimer}>
-          {isRunning ? 'Stop' : 'Start'}
+        <button onClick={startTimer} disabled={isRunning}>
+          Start
+        </button>
+        <button onClick={stopTimer} disabled={!isRunning}>
+          Stop
         </button>
         <button onClick={resetTimer}>Reset</button>
       </div>
