@@ -1,8 +1,11 @@
 import { useState } from "react"
+import Stopwatch from "./Stopwatch";
 
 export default function Exercises() {
   const [exerciseList, setExerciseList] = useState()
   const [message, setMessage] = useState()
+  const [resultPage, setResultPage] = useState(false)
+  const [finalTime, setFinalTime] = useState()
 
   function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
@@ -41,8 +44,28 @@ export default function Exercises() {
     setExerciseList(newData)
   }
 
+  function addResults() {
+    const body = {
+      exercises: exerciseList,
+      time: finalTime
+    }
+    fetch('https://hang-bar-db.web.app/exercise', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    })
+    .catch(err => alert(err))
+    .finally(setResultPage(!resultPage))
+  }
+
+
 return(
-    <main>
+  <>
+    {resultPage
+    ?<p>hello</p>
+    : <main>
 
       <section className="text-gray-600 body-font">
 
@@ -74,11 +97,13 @@ return(
                   )}
               </div>
 
-              <button className="flex mx-auto mt-16 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Submit</button>
+              <button onClick={addResults} className="flex mx-auto mt-16 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Submit</button>
             </div>
           </div>
         </div>
       </section>
+      <Stopwatch setFinalTime={setFinalTime} />
     </main>
-  );
+   }
+  </>);
 }

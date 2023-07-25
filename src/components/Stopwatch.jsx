@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const Stopwatch = () => {
+const Stopwatch = ({ setFinalTime }) => {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [tens, setTens] = useState(0);
@@ -33,6 +33,12 @@ const Stopwatch = () => {
       setMinutes((prevMinutes) => prevMinutes + 1);
       setSeconds(0);
     }
+
+    setFinalTime({
+      minutes: minutes,
+      seconds: seconds,
+    })
+
   }, [seconds]);
 
   const startTimer = () => {
@@ -49,6 +55,8 @@ const Stopwatch = () => {
     setSeconds(0);
     setTens(0);
   };
+
+
 
   return (
     <div className="container">
