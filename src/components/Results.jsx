@@ -1,14 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Results() {
+
+  const [exerciseList, setExerciseList] = useState()
+  const [message, setMessage] = useState()
+  
+  function getResults() {
+    setMessage("Getting your results");
+    fetch ('https://hang-bar-db.web.app/exercise-results',{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      setExerciseList();
+    })
+    .catch((err) => alert(err))
+    .finally(() => setMessage(""));
+  }
+
+    useEffect(()=> {
+      getResults();
+    }, []);
+
   return (
     <>
       <h2>This is a test of the results page</h2>
-      <p>This is your workout {newData}</p> {/* generated workout data */}
-      <p>This is your time {finalTime}</p>
-      {/* Only newData and finalTime needed */}
-      <Link to="/Exercises">Back to start</Link>
+    
     </>
   );
 }

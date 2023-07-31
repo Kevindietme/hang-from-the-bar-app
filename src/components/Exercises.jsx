@@ -1,6 +1,4 @@
-import React from "react";
 import { useState } from "react";
-import Results from "./Results";
 import Stopwatch from "./Stopwatch";
 
 
@@ -13,7 +11,7 @@ export default function Exercises() {
   function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
   
-    while (currentIndex != 0) {
+    while (currentIndex !== 0) {
   
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
@@ -60,10 +58,8 @@ export default function Exercises() {
     .finally(setResultPage(!resultPage))
   }
 
-
 return(
   <>
-    {resultPage ? (
     <main>
       <section className="text-gray-600 body-font">
 
@@ -102,9 +98,5 @@ return(
       </section>
       <Stopwatch finalTime={finalTime} setFinalTime={setFinalTime} />
     </main>
-    ) : (
-  <Results />
-  )}
 </>
-
 );}
