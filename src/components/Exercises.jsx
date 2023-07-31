@@ -1,23 +1,23 @@
-import { useState } from "react"
+import React from "react";
+import { useState } from "react";
+import Results from "./Results";
 import Stopwatch from "./Stopwatch";
+
 
 export default function Exercises() {
   const [exerciseList, setExerciseList] = useState()
   const [message, setMessage] = useState()
-  const [resultPage, setResultPage] = useState(false)
+  const [resultPage, setResultPage] = useState(true)
   const [finalTime, setFinalTime] = useState()
 
   function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
   
-    // While there remain elements to shuffle.
     while (currentIndex != 0) {
   
-      // Pick a remaining element.
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
   
-      // And swap it with the current element.
       [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
     }
@@ -26,14 +26,14 @@ export default function Exercises() {
   }
 
   const getExercises = async (type) => {
-    setMessage('Loading...')
+    setMessage('Generating workout...')
     setExerciseList()
     const response = await fetch(`https://hang-bar-db.web.app/exercise`)
-    // const response = await fetch(`https://hang-bar-db.web.app/exercise${type}`)
+    
     let data = await response.json()
     data = shuffle(data)
     console.log(data)
-    // TODO: get rid of all but one of each type
+    
     const newData = [
       data.find(e => e.exerciseType === "Pull"),
       data.find(e => e.exerciseType === "Push"),
@@ -63,10 +63,8 @@ export default function Exercises() {
 
 return(
   <>
-    {resultPage
-    ?<p>hello</p>
-    : <main>
-
+    {resultPage ? (
+    <main>
       <section className="text-gray-600 body-font">
 
         <div className="button-container">
@@ -102,8 +100,11 @@ return(
           </div>
         </div>
       </section>
-      <Stopwatch setFinalTime={setFinalTime} />
+      <Stopwatch finalTime={finalTime} setFinalTime={setFinalTime} />
     </main>
-   }
-  </>);
-}
+    ) : (
+  <Results />
+  )}
+</>
+
+);}
