@@ -47,7 +47,8 @@ export default function Exercises() {
       exercises: exerciseList,
       time: finalTime
     }
-    fetch('https://hang-bar-db.web.app/exercise', {
+    // fetch('https://hang-bar-db.web.app/exercise-results', {
+    fetch('http://127.0.0.1:5002/exercise-results', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
