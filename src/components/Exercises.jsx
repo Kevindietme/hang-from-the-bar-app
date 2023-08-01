@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Stopwatch from "./Stopwatch";
+import Results from "./Results";
 
 
 export default function Exercises() {
   const [exerciseList, setExerciseList] = useState()
   const [message, setMessage] = useState()
-  const [resultPage, setResultPage] = useState(true)
+  //const [resultPage, setResultPage] = useState(true)
   const [finalTime, setFinalTime] = useState()
+  const [showResult, setShowResult] = useState(false)
 
   function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
@@ -56,12 +58,17 @@ export default function Exercises() {
       body: JSON.stringify(body)
     })
     .catch(err => alert(err))
-    .finally(setResultPage(!resultPage))
+    //.finally(setResultPage(!resultPage))
+    setShowResult(true);
   }
 
 return(
   <>
     <main>
+
+      {showResult 
+      ? <Results exerciseList={exerciseList} setShowResult={setShowResult} setExerciseList={setExerciseList}/> 
+      : 
       <section className="text-gray-600 body-font">
 
         <div className="button-container">
@@ -97,7 +104,9 @@ return(
           </div>
         </div>
       </section>
+}
       <Stopwatch finalTime={finalTime} setFinalTime={setFinalTime} />
+    
     </main>
 </>
 );}

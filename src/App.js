@@ -9,7 +9,7 @@ function App() {
   <>
   <Header />
   <Exercises />
-  <Results />
+  {/* <Results /> */}
   <Footer />
   </>
   );
