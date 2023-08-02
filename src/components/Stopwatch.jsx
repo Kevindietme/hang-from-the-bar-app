@@ -65,9 +65,8 @@ const Stopwatch = ({ setFinalTime, showResult }) => {
   }, [showResult]);
 
   return (
-    <div className="container mx-auto border border-red-400 bg-slate-400">
-      {/* <h2 className="w-fit mx-auto">Stopwatch</h2> */}
-      <p className="time w-fit mx-auto font-mono text-7xl">
+    <div>
+      <p className="time w-fit mx-auto font-mono text-7xl text-green-500">
         <span id="minutes">{minutes.toString().padStart(2, '0')}</span>:
         <span id="seconds">{seconds.toString().padStart(2, '0')}</span>:
         <span id="tens">{tens.toString().padStart(2, '0')}</span>
