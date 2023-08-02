@@ -3,13 +3,12 @@ import { useEffect, useState } from "react";
 export default function Results({exerciseList,setShowResult}) {
   
 const handleReset = () => {
-      setShowResult(false);
-              
+      setShowResult(false);     
     }
   
 return (
     <>
-        <p>
+        <h2>
       {exerciseList.map(exercise => (
                       <div key={exercise.id} className="p-2 sm:w-1/2 w-full">
                         <div className="bg-gray-100 rounded flex p-4 h-full items-center">
@@ -21,7 +20,7 @@ return (
                         </div>
                       </div>
                     ))}
-        </p>
+        </h2>
       <button onClick={handleReset}>Back to Start</button>
     </>
   );

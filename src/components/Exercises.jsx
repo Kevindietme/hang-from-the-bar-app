@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Stopwatch from "./Stopwatch";
 import Results from "./Results";
+import resetTimer from "./Stopwatch";
 
 
 export default function Exercises() {
@@ -62,6 +63,13 @@ export default function Exercises() {
     setShowResult(true);
   }
 
+  useEffect (() => {
+    if(!showResult) {
+      setExerciseList([])
+      setFinalTime()
+    }
+  }, [showResult]);
+
 return(
   <>
     <main>
@@ -105,7 +113,7 @@ return(
         </div>
       </section>
 }
-      <Stopwatch finalTime={finalTime} setFinalTime={setFinalTime} />
+      <Stopwatch setFinalTime={setFinalTime} showResult={showResult}/>
     
     </main>
 </>

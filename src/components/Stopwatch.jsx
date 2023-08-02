@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const Stopwatch = ({ setFinalTime }) => {
+const Stopwatch = ({ setFinalTime, showResult }) => {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [tens, setTens] = useState(0);
@@ -56,11 +56,15 @@ const Stopwatch = ({ setFinalTime }) => {
     setTens(0);
   };
 
-
+  useEffect (() => {
+    if(!showResult) {
+      resetTimer()
+    }
+  }, [showResult]);
 
   return (
     <div className="container">
-      <h1>Stopwatch</h1>
+      <h2>Stopwatch</h2>
       <p className="time">
         <span id="minutes">{minutes.toString().padStart(2, '0')}</span>:
         <span id="seconds">{seconds.toString().padStart(2, '0')}</span>:
