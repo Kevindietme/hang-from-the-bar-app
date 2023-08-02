@@ -56,6 +56,8 @@ const Stopwatch = ({ setFinalTime, showResult }) => {
     setTens(0);
   };
 
+
+  //when showResult is false again, use resetTimer to set back to 0 
   useEffect (() => {
     if(!showResult) {
       resetTimer()
@@ -63,14 +65,14 @@ const Stopwatch = ({ setFinalTime, showResult }) => {
   }, [showResult]);
 
   return (
-    <div className="container">
-      <h2>Stopwatch</h2>
-      <p className="time">
+    <div className="container mx-auto border border-red-400 bg-slate-400">
+      {/* <h2 className="w-fit mx-auto">Stopwatch</h2> */}
+      <p className="time w-fit mx-auto font-mono text-7xl">
         <span id="minutes">{minutes.toString().padStart(2, '0')}</span>:
         <span id="seconds">{seconds.toString().padStart(2, '0')}</span>:
         <span id="tens">{tens.toString().padStart(2, '0')}</span>
       </p>
-      <div className="buttons-container">
+      <div className="buttons-container w-fit mx-auto">
         <button onClick={startTimer} disabled={isRunning}>
           Start
         </button>
