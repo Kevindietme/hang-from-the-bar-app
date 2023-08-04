@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Results({exerciseList,setShowResult}) {
+export default function Results({exerciseList,setShowResult, setExerciseList, previousResults}) {
   
 const handleReset = () => {
       setShowResult(false);     
     }
+
+const nav = useNavigate();
   
 return (
     <>
@@ -22,6 +25,7 @@ return (
                     ))}
         </h2>
       <button onClick={handleReset}>Back to Start</button>
+      <button onClick={()=>{nav('/TotalResults')}}>Here is Total Result Button</button>
     </>
   );
 }
