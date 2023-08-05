@@ -1,18 +1,24 @@
+import React from "react";
+
 export default function Card({ time }) {
+  if (!time) return null;
 
-if(!time) return null
+  // Helper function to format the time object into "MM:SS" format
+  const formatTime = (timeObject) => {
+    if (timeObject && timeObject.minutes !== undefined && timeObject.seconds !== undefined) {
+      const minutes = String(timeObject.minutes).padStart(2, "0");
+      const seconds = String(timeObject.seconds).padStart(2, "0");
+      return `${minutes}:${seconds}`;
+    }
+    return "00:00";
+  };
+
   return (
-    <section>
-      <>
-          <h3>{(time?.minutes + '').padStart(2, '0') || '00'}:{(time?.seconds + '').padStart(2, '0') || '00'}</h3>
-
-          <div className="bg-gray-100 rounded flex p-4 h-full items-center">
-                          <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" className="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                            <path d="M22 4L12 14.01l-3-3"></path>
-                          </svg>
-                          </div>
-      </>
-    </section>
+    <div className="w-64 bg-gray-100 rounded p-4 shadow-md">
+      <h3 className="text-3xl font-semibold text-center text-yellow-500 mb-2">{formatTime(time)}</h3>
+      <div className="text-center">
+        <p className="text-gray-600 text-lg">Previous Time</p>
+      </div>
+    </div>
   );
 }
