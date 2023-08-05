@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Stopwatch from "./Stopwatch";
 import Results from "./Results";
-import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 
 
@@ -45,6 +44,10 @@ export default function Exercises() {
     setExerciseList(newData)
   }
 
+  function handleFinalTimeChange(time) {
+    setFinalTime(time);
+  }
+
   function addResults() {
     const body = {
       exercises: exerciseList,
@@ -75,9 +78,10 @@ export default function Exercises() {
       
       {showResult ? (
       <Results 
-        exerciseList={exerciseList} 
-        setShowResult={setShowResult} 
-        setExerciseList={setExerciseList}/> 
+      exerciseList={exerciseList}
+      finalTime={finalTime}
+      setShowResult={setShowResult}
+      setExerciseList={setExerciseList}/> 
       ) : (
       <section className="bg-cyan-500">
 
@@ -103,7 +107,7 @@ export default function Exercises() {
                   </div>
                   )}
               </div>
-          <Stopwatch setFinalTime={setFinalTime} showResult={showResult}/>
+              <Stopwatch setFinalTime={handleFinalTimeChange} showResult={showResult} />
               <button onClick={addResults} className="flex mt-3 mb-3 mx-auto mt-16 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Submit</button>
             </div>
       </section>
