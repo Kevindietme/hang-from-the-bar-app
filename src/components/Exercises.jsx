@@ -9,7 +9,7 @@ export default function Exercises() {
   const [message, setMessage] = useState()
   const [finalTime, setFinalTime] = useState()
   const [showResult, setShowResult] = useState(false)
-  const [showImage, setShowImage] = useState(true); // State to control the visibility of the image
+  const [showImage, setShowImage] = useState(true); 
 
   const nav = useNavigate();
 
@@ -75,7 +75,7 @@ export default function Exercises() {
   }, [showResult]);
 
   return (
-    <main className="h-screen bg-cyan-200 flex items-center justify-center">
+    <main className="h-screen bg-gray-800 flex items-center justify-center">
       {showResult ? (
         <Results
           exerciseList={exerciseList}
@@ -88,13 +88,12 @@ export default function Exercises() {
           <div className="w-10/12 mx-auto h-full">
             <div>
               <div className="text-center mb-10">
-                <h1 className="sm:text-2xl text-4xl font-medium text-center title-font text-green-500 mb-4">
-                  Hang From the Bar
-                </h1>
+                <img className="h-auto mx-auto max-w-lg" src="/images/hangBarTwo.png" alt="Hang Bar App Logo Image"></img>
+                
                 <button
                 onClick={() => {
-                    setShowImage(false); // Hide the image
-                    getExercises(); // Fetch and show workout exercises
+                    setShowImage(false); 
+                    getExercises();
                   }}
                   className="flex mx-auto mt-10 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg"
                 >

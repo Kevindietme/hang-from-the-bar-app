@@ -20,8 +20,9 @@ export default function Results({ exerciseList, finalTime, setShowResult, setExe
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <div className="max-w-lg w-full px-4 py-8 bg-white shadow-lg rounded-lg">
+      <div className="max-w-lg w-full px-4 py-8 bg-gray-800 shadow-lg rounded-lg">
         <h2 className="mb-4 text-2xl font-bold">Results</h2>
+        <img className="h-auto mx-auto max-w-lg" src="/images/resultsImg.png" alt="Hang Bar App Logo Image"></img>
         {/* Use a for loop to iterate over the exerciseList */}
         {exerciseList &&
           exerciseList.length > 0 &&
@@ -59,7 +60,7 @@ export default function Results({ exerciseList, finalTime, setShowResult, setExe
             onClick={() => nav("/TotalResults")}
             className="flex-1 px-4 py-2 text-white bg-green-500 border rounded-lg focus:outline-none hover:bg-green-600"
           >
-            Here is Total Result Button
+            See my workouts
           </button>
         </div>
       </div>
