@@ -35,15 +35,17 @@ export default function TotalResults() {
   }, []);
 
   return (
-    <>
-      <section className="bg-cyan-500">
-        <div className="w-10/12 mx-auto h-full">
+    <div className="flex flex-col items-center justify-center h-screen">
+      <section className="bg-cyan-500 p-8 w-full">
+        <div className="max-w-lg mx-auto">
           <h1 className="sm:text-3xl text-2xl font-medium text-center title-font text-gray-300 mb-4">Hang From the Bar - All Results History</h1>
-          <p className="text-center text-white">Date Stamp: {currentDate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          <p className="text-center text-white mb-4">Date Stamp: {currentDate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</p>
           {previousResults.length > 0 ? (
-            <div className="container flex flex-col items-center justify-center w-full mx-auto">
+            <div className="container flex flex-col items-center justify-center mx-auto">
               {previousResults.map((data) => (
-                <ExerciseCard key={data.id} time={data.time} />
+                <div key={data.id} className="mb-4">
+                  <ExerciseCard time={data.time} />
+                </div>
               ))}
             </div>
           ) : (
@@ -52,6 +54,6 @@ export default function TotalResults() {
           <button onClick={() => nav('/')} className="flex mx-auto mt-10 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Back to Home</button>
         </div>
       </section>
-    </>
+    </div>
   );
 }

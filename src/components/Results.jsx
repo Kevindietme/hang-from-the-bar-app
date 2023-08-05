@@ -19,13 +19,14 @@ export default function Results({ exerciseList, finalTime, setShowResult, setExe
   };
 
   return (
-    <>
-      <h2>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <div className="max-w-lg w-full px-4 py-8 bg-white shadow-lg rounded-lg">
+        <h2 className="mb-4 text-2xl font-bold">Results</h2>
         {/* Use a for loop to iterate over the exerciseList */}
         {exerciseList &&
           exerciseList.length > 0 &&
           exerciseList.map((exercise) => (
-            <div key={exercise.id} className="p-2 sm:w-1/2 w-full">
+            <div key={exercise.id} className="p-2 w-full">
               <div className="bg-gray-100 rounded flex p-4 h-full items-center">
                 <svg
                   fill="none"
@@ -45,11 +46,23 @@ export default function Results({ exerciseList, finalTime, setShowResult, setExe
               </div>
             </div>
           ))}
-      </h2>
-      {/* Display the formatted finalTime */}
-      <p>Final Time: {formatTime(finalTime)}</p>
-      <button onClick={handleReset}>Back to Start</button>
-      <button onClick={() => nav("/TotalResults")}>Here is Total Result Button</button>
-    </>
+        {/* Display the formatted finalTime */}
+        <p className="mt-4">Final Time: {formatTime(finalTime)}</p>
+        <div className="mt-8 flex space-x-4">
+          <button
+            onClick={handleReset}
+            className="flex-1 px-4 py-2 text-white bg-blue-500 border rounded-lg focus:outline-none hover:bg-blue-600"
+          >
+            Back to Start
+          </button>
+          <button
+            onClick={() => nav("/TotalResults")}
+            className="flex-1 px-4 py-2 text-white bg-green-500 border rounded-lg focus:outline-none hover:bg-green-600"
+          >
+            Here is Total Result Button
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
