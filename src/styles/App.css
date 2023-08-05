@@ -13,11 +13,11 @@ button {
   padding: 0.4rem 2rem;
   margin: 0 0.5rem;
   border-radius: 10px;
-  border: 1px solid #f8f8f8;
-  background-color: rgba(52, 50, 50, 0.6);
+  border: 2.0px solid #f8f8f8;
+  background-color: rgba(33, 234, 40, 0.828);
   color: #f8f8f8;
 }
 
 button:hover {
-  background-color: rgba(42, 254, 23, 0.882);
+  background-color: rgb(7, 212, 7);
 }

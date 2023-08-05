@@ -9,6 +9,8 @@ export default function Exercises() {
   const [message, setMessage] = useState()
   const [finalTime, setFinalTime] = useState()
   const [showResult, setShowResult] = useState(false)
+  const [showImage, setShowImage] = useState(true); // State to control the visibility of the image
+
   const nav = useNavigate();
 
   function shuffle(array) {
@@ -72,33 +74,57 @@ export default function Exercises() {
     }
   }, [showResult]);
 
-  return(
-  
-    <main className="h-screen bg-cyan-200">
-      
+  return (
+    <main className="h-screen bg-cyan-200 flex items-center justify-center">
       {showResult ? (
-      <Results 
-      exerciseList={exerciseList}
-      finalTime={finalTime}
-      setShowResult={setShowResult}
-      setExerciseList={setExerciseList}/> 
+        <Results
+          exerciseList={exerciseList}
+          finalTime={finalTime}
+          setShowResult={setShowResult}
+          setExerciseList={setExerciseList}
+        />
       ) : (
-      <section className="bg-cyan-500">
+        <section className="bg-gray-800 w-full h-full py-10">
+          <div className="w-10/12 mx-auto h-full">
+            <div>
+              <div className="text-center mb-10">
+                <h1 className="sm:text-2xl text-4xl font-medium text-center title-font text-green-500 mb-4">
+                  Hang From the Bar
+                </h1>
+                <button
+                onClick={() => {
+                    setShowImage(false); // Hide the image
+                    getExercises(); // Fetch and show workout exercises
+                  }}
+                  className="flex mx-auto mt-10 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg"
+                >
+                  Generate Workout
+                </button>
+              </div>
 
-        <div className="w-10/12 mx-auto h-full">
-              <div>
-                <div className="text-center mb-10">
-                  <h1 className="sm:text-3xl text-2xl font-medium text-center title-font text-gray-300 mb-4">Hang From the Bar</h1>       
-                  <button onClick={getExercises} className="flex mx-auto mt-10 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg ">Generate Workout</button>
-                  </div>
-                  
-                {!exerciseList
-                  ? <p className="message">{message}</p>
-                  : (<div className="container flex flex-col items-center justify-center w-full mx-auto">
-                    {exerciseList.map(exercise => (
-                      <div key={exercise.id} className="p-2 sm:w-1/2 w-full">
-                        <div className="bg-lime-500 rounded flex p-4 h-full items-center hover:bg-gray-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
-                          <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" className="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+              {showImage && (
+                <img
+                  src="/images/slothHang.jpg"
+                  alt="Hanging Sloth Image"
+                  className="w-1/2 mx-auto animate-pulse"
+                />
+              )}
+
+              {!exerciseList ? (
+                <p className="message">{message}</p>
+              ) : (
+                <div className="container flex flex-col items-center justify-center w-full mx-auto">
+                  {exerciseList.map((exercise) => (
+                    <div key={exercise.id} className="p-2 sm:w-1/2 w-full">
+                      <div className="bg-lime-500 rounded flex p-4 h-full items-center hover:bg-green-500 active:bg-green-400 focus:outline-none focus:ring focus:ring-green-900">
+                        <svg
+                          fill="none"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="3"
+                          className="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4"
+                          viewBox="0 0 24 24">
                           </svg>
                           <span className="title-font font-medium">{exercise.exerciseType}: {exercise.nameOfExercise}</span>
                         </div>
@@ -111,6 +137,6 @@ export default function Exercises() {
               <button onClick={addResults} className="flex mt-3 mb-3 mx-auto mt-16 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Submit</button>
             </div>
       </section>
-      )};
+      )}
     </main>
-  )};
+  )}
