@@ -10,6 +10,7 @@ export default function Exercises() {
   const [finalTime, setFinalTime] = useState()
   const [showResult, setShowResult] = useState(false)
   const [showImage, setShowImage] = useState(true); 
+  
 
   const nav = useNavigate();
 

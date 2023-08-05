@@ -35,7 +35,7 @@ export default function Results({ exerciseList, finalTime, setShowResult, setExe
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="3"
-                  className="text-yellow-500 w-6 h-6 flex-shrink-0 mr-4"
+                  className="text-green-500 w-6 h-6 flex-shrink-0 mr-4"
                   viewBox="0 0 24 24"
                 >
                   <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
@@ -48,11 +48,11 @@ export default function Results({ exerciseList, finalTime, setShowResult, setExe
             </div>
           ))}
         {/* Display the formatted finalTime */}
-        <p className="mt-4">Final Time: {formatTime(finalTime)}</p>
+        <p className="mt-4 font-mono text-center text-5xl text-green-500">Final Time: {formatTime(finalTime)}</p>
         <div className="mt-8 flex space-x-4">
           <button
             onClick={handleReset}
-            className="flex-1 px-4 py-2 text-white bg-blue-500 border rounded-lg focus:outline-none hover:bg-blue-600"
+            className="flex-1 px-4 py-2 text-white bg-yellow-500 border rounded-lg focus:outline-none hover:bg-yellow-600"
           >
             Back to Start
           </button>

@@ -36,9 +36,10 @@ export default function TotalResults() {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <section className="bg-cyan-500 p-8 w-full">
+      <section className="bg-gray-800 p-8 w-full">
         <div className="max-w-lg mx-auto">
-        <img className="h-auto mx-auto max-w-lg" src="/images/progressImg.png" alt="Hang Bar App Logo Image"></img>          <p className="text-center text-white mb-4">Date Stamp: {currentDate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        <img className="h-auto mx-auto max-w-lg" src="/images/progressImg.png" alt="Hang Bar App Logo Image"></img>          
+            <p className="font-mono text-center text-2xl text-green-400 mb-4">Date: {currentDate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</p>
           {previousResults.length > 0 ? (
             <div className="container flex flex-col items-center justify-center mx-auto">
               {previousResults.map((data) => (
