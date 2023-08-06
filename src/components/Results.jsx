@@ -8,7 +8,6 @@ export default function Results({ exerciseList, finalTime, setShowResult, setExe
 
   const nav = useNavigate();
 
-  // Helper function to format the time object into "MM:SS" format
   const formatTime = (timeObject) => {
     if (timeObject && timeObject.minutes !== undefined && timeObject.seconds !== undefined) {
       const minutes = String(timeObject.minutes).padStart(2, "0");
@@ -19,16 +18,15 @@ export default function Results({ exerciseList, finalTime, setShowResult, setExe
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div className="max-w-lg w-full px-4 py-8 bg-gray-800 shadow-lg rounded-lg">
-        <h2 className="mb-4 text-2xl font-bold">Results</h2>
+    <div className="flex flex-col items-center justify-center">
+      <div className="max-w-lg w-full px-4 py-8 bg-gray-800">
         <img className="h-auto mx-auto max-w-lg" src="/images/resultsImg.png" alt="Hang Bar App Logo Image"></img>
         {/* Use a for loop to iterate over the exerciseList */}
         {exerciseList &&
           exerciseList.length > 0 &&
           exerciseList.map((exercise) => (
             <div key={exercise.id} className="p-2 w-full">
-              <div className="bg-gray-100 rounded flex p-4 h-full items-center">
+              <div className="bg-gray-100 hover:bg-green-600 rounded flex p-4 h-full items-center">
                 <svg
                   fill="none"
                   stroke="currentColor"

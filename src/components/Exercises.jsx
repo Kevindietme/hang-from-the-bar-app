@@ -10,7 +10,6 @@ export default function Exercises() {
   const [finalTime, setFinalTime] = useState()
   const [showResult, setShowResult] = useState(false)
   const [showImage, setShowImage] = useState(true); 
-  
 
   const nav = useNavigate();
 
@@ -76,7 +75,7 @@ export default function Exercises() {
   }, [showResult]);
 
   return (
-    <main className="h-screen bg-gray-800 flex items-center justify-center">
+    <main className="min-h-screen bg-gray-800 flex items-center justify-center">
       {showResult ? (
         <Results
           exerciseList={exerciseList}
@@ -89,14 +88,14 @@ export default function Exercises() {
           <div className="w-10/12 mx-auto h-full">
             <div>
               <div className="text-center mb-10">
-                <img className="h-auto mx-auto max-w-lg" src="/images/hangBarTwo.png" alt="Hang Bar App Logo Image"></img>
+                <img className="h-max mx-auto max-w-lg" src="/images/hangBarTwo.png" alt="Hang Bar App Logo Image"></img>
                 
                 <button
                 onClick={() => {
                     setShowImage(false); 
                     getExercises();
                   }}
-                  className="flex mx-auto mt-10 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg"
+                  className="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg"
                 >
                   Generate Workout
                 </button>
@@ -106,7 +105,7 @@ export default function Exercises() {
                 <img
                   src="/images/slothHang.jpg"
                   alt="Hanging Sloth Image"
-                  className="w-1/2 mx-auto animate-pulse"
+                  className="w-1/2 mx-auto mb-4 animate-pulse"
                 />
               )}
 
@@ -116,7 +115,7 @@ export default function Exercises() {
                 <div className="container flex flex-col items-center justify-center w-full mx-auto">
                   {exerciseList.map((exercise) => (
                     <div key={exercise.id} className="p-2 sm:w-1/2 w-full">
-                      <div className="bg-lime-500 rounded flex p-4 h-full items-center hover:bg-green-500 active:bg-green-400 focus:outline-none focus:ring focus:ring-green-900">
+                      <div className="bg-gray-100 rounded flex p-4 h-full items-center hover:bg-green-600 active:bg-green-400 focus:outline-none focus:ring focus:ring-green-900">
                         <svg
                           fill="none"
                           stroke="currentColor"
@@ -134,7 +133,7 @@ export default function Exercises() {
                   )}
               </div>
               <Stopwatch setFinalTime={handleFinalTimeChange} showResult={showResult} />
-              <button onClick={addResults} className="flex mt-3 mb-3 mx-auto mt-16 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Submit</button>
+              <button onClick={addResults} className="flex mt-6 mb-3 mx-auto mt-16 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Submit</button>
             </div>
       </section>
       )}
