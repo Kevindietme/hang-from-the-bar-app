@@ -20,7 +20,7 @@ export default function Results({ exerciseList, finalTime, setShowResult, setExe
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="max-w-lg w-full px-4 py-8 bg-gray-800">
-        <img className="h-auto mx-auto max-w-lg" src="/images/resultsImg.png" alt="Hang Bar App Logo"></img>
+        <img className="h-auto mx-auto max-w-lg" src="/images/hangBarMainResults.png" alt="Hang Bar App Logo"></img>
         {exerciseList &&
           exerciseList.length > 0 &&
           exerciseList.map((exercise) => (

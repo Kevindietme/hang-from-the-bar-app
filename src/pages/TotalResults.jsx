@@ -36,7 +36,7 @@ export default function TotalResults() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-800">
       <section className="bg-gray-800 p-8 w-full">
         <div className="max-w-lg mx-auto">
-        <img className="h-auto mx-auto max-w-lg" src="/images/progressImg.png" alt="Hang Bar App Logo"></img>          
+        <img className="h-auto mx-auto max-w-lg" src="/images/hangBarMainProgress.png" alt="Hang Bar App Logo"></img>          
             <p className="font-mono text-center text-2xl text-green-500 mb-4">Date: {currentDate.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}</p>
           {previousResults.length > 0 ? (
             <div className="container flex flex-col items-center justify-center mx-auto">

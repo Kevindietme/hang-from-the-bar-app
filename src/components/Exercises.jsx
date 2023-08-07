@@ -97,7 +97,7 @@ export default function Exercises() {
               <div className="text-center mb-10">
                 <img
                   className="h-max mx-auto max-w-lg"
-                  src="/images/hangBarTwo.png"
+                  src="/images/hangBarMain.png"
                   alt="Hang Bar App Logo"
                 ></img>
 
