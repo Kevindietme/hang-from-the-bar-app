@@ -56,8 +56,6 @@ const Stopwatch = ({ setFinalTime, showResult }) => {
     setTens(0);
   };
 
-
-  //when showResult is false again, use resetTimer to set back to 0 
   useEffect (() => {
     if(!showResult) {
       resetTimer()

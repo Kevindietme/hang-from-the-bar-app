@@ -20,8 +20,7 @@ export default function Results({ exerciseList, finalTime, setShowResult, setExe
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="max-w-lg w-full px-4 py-8 bg-gray-800">
-        <img className="h-auto mx-auto max-w-lg" src="/images/resultsImg.png" alt="Hang Bar App Logo Image"></img>
-        {/* Use a for loop to iterate over the exerciseList */}
+        <img className="h-auto mx-auto max-w-lg" src="/images/resultsImg.png" alt="Hang Bar App Logo"></img>
         {exerciseList &&
           exerciseList.length > 0 &&
           exerciseList.map((exercise) => (
@@ -45,7 +44,6 @@ export default function Results({ exerciseList, finalTime, setShowResult, setExe
               </div>
             </div>
           ))}
-        {/* Display the formatted finalTime */}
         <p className="mt-4 font-mono text-center text-5xl text-green-500">Final Time: {formatTime(finalTime)}</p>
         <div className="mt-8 flex space-x-4">
           <button

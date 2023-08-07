@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Stopwatch from "./Stopwatch";
 import Results from "./Results";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 export default function Exercises() {
   const [exerciseList, setExerciseList] = useState();
@@ -11,7 +11,7 @@ export default function Exercises() {
   const [showImage, setShowImage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  const nav = useNavigate();
+  //const nav = useNavigate();
 
   function shuffle(array) {
     let currentIndex = array.length,
@@ -62,8 +62,8 @@ export default function Exercises() {
       exercises: exerciseList,
       time: finalTime,
     };
-    // fetch('https://hang-bar-db.web.app/exercise-results', {
-    fetch("http://127.0.0.1:5002/exercise-results", {
+    // fetch('http://127.0.0.1:5002/exercise-results', {
+    fetch("https://hang-bar-db.web.app/exercise-results", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +98,7 @@ export default function Exercises() {
                 <img
                   className="h-max mx-auto max-w-lg"
                   src="/images/hangBarTwo.png"
-                  alt="Hang Bar App Logo Image"
+                  alt="Hang Bar App Logo"
                 ></img>
 
                 <button
@@ -115,7 +115,7 @@ export default function Exercises() {
               {showImage && (
                 <img
                   src="/images/slothHang.jpg"
-                  alt="Hanging Sloth Image"
+                  alt="Hanging Sloth"
                   className="w-1/2 mx-auto mb-4 animate-pulse"
                 />
               )}
@@ -153,7 +153,7 @@ export default function Exercises() {
               )}
               <Stopwatch setFinalTime={handleFinalTimeChange} showResult={showResult} />
               <button
-                onClick={addResults} className="flex mt-6 mb-3 mx-auto mt-16 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Submit</button>
+                onClick={addResults} className="flex mb-3 mx-auto mt-16 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Submit</button>
                 </div>
                 </div>
           </section>
